@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heroes</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-title">ZonetoCode</div>
+      <div class="nav-toggle" id="menuToggle">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Cart</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </nav>
+    <!-- Hero Header -->
+    <div class="page-header" id="home">
+      <div class="page-header-content">
+        <div class="header-badge">FULL STACK APP</div>
+        <h1>Application Management</h1>
+        <p>A modern web application built with Node.js, Express & MongoDB</p>
+
+        <!-- Project Description -->
+        <div class="project-description">
+          <p>
+            A full-stack CRUD web application that allows users to efficiently
+            manage application records. Features include adding, viewing,
+            updating, and deleting records in real-time using a RESTful API
+            connected to a cloud-based MongoDB database.
+          </p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="project-features">
+          <div class="feature">
+            <span class="feature-icon">✅</span>
+            <span>Real-time CRUD Operations</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✅</span>
+            <span>RESTful API Integration</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✅</span>
+            <span>Cloud MongoDB Database</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✅</span>
+            <span>Responsive Design</span>
+          </div>
+        </div>
+
+        <!-- Tech Tags -->
+        <div class="header-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">jQuery</span>
+          <span class="tag">REST API</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert Box -->
+    <div id="alert-box" class="alert-box" style="display: none">
+      <span id="alert-msg"></span>
+      <button onclick="closeAlert()">✕</button>
+    </div>
+
+    <!-- Add Form -->
+    <div class="form-container" id="add-hero">
+      <div class="form-header"><h2>ADD HERO</h2></div>
+      <div class="form-body">
+        <div class="form-section-title">Your Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="title" placeholder="Title" />
+          </div>
+          <div class="form-group">
+            <input type="text" id="email" placeholder="Email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <input type="text" id="fname" placeholder="First Name" />
+          </div>
+        </div>
+        <div class="form-section-title">Hero Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="lname" placeholder="Last Name" />
+          </div>
+          <div class="form-group">
+            <input type="text" id="city" placeholder="City" />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="save-btn" onclick="saveHero()">Save</button>
+          <button class="clear-btn" onclick="clearForm()">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden ID -->
+    <input type="hidden" id="heroId" />
+
+    <!-- Update Form -->
+    <div class="form-container" id="update-form" style="display: none">
+      <div class="form-header"><h2>UPDATE HERO</h2></div>
+      <div class="form-body">
+        <div class="form-section-title">Your Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="u-title" placeholder="Title" />
+          </div>
+          <div class="form-group">
+            <input type="text" id="u-email" placeholder="Email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <input type="text" id="u-fname" placeholder="First Name" />
+          </div>
+        </div>
+        <div class="form-section-title">Hero Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="u-lname" placeholder="Last Name" />
+          </div>
+          <div class="form-group">
+            <input type="text" id="u-city" placeholder="City" />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="save-btn" onclick="updateHero()">Update</button>
+          <button class="clear-btn" onclick="cancelUpdate()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div id="list">
+      <button
+        class="back-btn"
+        id="back-btn"
+        style="display: none"
+        onclick="cancelUpdate()"
+      >
+        ← Back to Add Hero
+      </button>
+      <table id="hero-table">
+        <thead>
+          <tr>
+            <th>Sl No</th>
+            <th>Title</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="herogrid"></tbody>
+      </table>
+    </div>
+
+    <!-- Scripts loaded at bottom -->
+    <script src="lib/jquery-4.0.0.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/alert.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/save.js"></script>
+    <script src="js/edit.js"></script>
+    <script src="js/delete.js"></script>
+  </body>
+</html>
