@@ -1,14 +1,9 @@
 const mongoose = require("mongoose");
-const config = require("../config.json");
+require("dotenv").config();
 
 const connectDB = () => {
-  let dbString =
-    "mongodb+srv://{{uname}}:{{upassword}}@cluster0.{{dbstring}}.mongodb.net/{{dbname}}?appName=Cluster0";
-  dbString = dbString
-    .replace("{{uname}}", config.dbUsername)
-    .replace("{{upassword}}", config.dbPassword)
-    .replace("{{dbstring}}", config.dbString)
-    .replace("{{dbname}}", config.dbName);
+  const dbString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.${process.env.DB_STRING}.mongodb.net/${process.env.DB_NAME}?appName=Cluster0`;
+
   mongoose
     .connect(dbString)
     .then(() => console.log("DB Connected ✅"))
