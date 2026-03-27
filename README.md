@@ -1,3 +1,5 @@
+
+`````
 // fullstackProject/
 ├── client/              # Frontend (UI & Assets)
 │   ├── public/          # Static files served to the browser
@@ -27,3 +29,4 @@
 │
 ├── .gitignore           # Exclude node_modules and .env
 └── vercel.json          # Deployment configuration
+`````
