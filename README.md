@@ -7,15 +7,25 @@
 │   │   │   └── index.css  # Unified CSS 
 │   │   │   └── style.css  # Unified CSS 
 │   │   ├── js/
-│   │   │   └── main.js    # Unified JS (Toggles, AJAX, Mobile Menu)
-│   │   └── images/      # Any logos or icons
-│   └── views/           # Pug Templates (Moved from Step 21)
-│       ├── dashboard.pug  # Displays Step 20 CRUD data
-│       ├── login.pug
-│       ├── register.pug
-│       ├── profile.pug
-│       ├── logout.pug
-│       └── layout.pug     # Optional: Base template
+│   │   │  └── config.js
+│   │   │  └── alert.js   
+│   │   │  └── render.js    # Unified JS (Toggles, AJAX, Mobile Menu)
+│   │   │  └── save.js    
+│   │   │  └── edit.js
+│   │   │  └── delete.js
+│   │   │  └── script.js
+│   │   ├── lib/
+│   │   │     └── jquery-4.0.0.js
+│   │   └── dashboard.html  
+│   └── views/           # Pug Templates 
+│   │     ├── login.pug
+│   │     ├── register.pug
+│   │     ├── profile.pug
+│   │     ├── logout.pug
+│   │     └── layout.pug     # Optional: Base template
+│   ├── .env        
+│   ├── index.js 
+│   └── package.json
 │
 ├── server/              # Backend (Logic & Database)
 │   ├── db/              # Database connection logic
