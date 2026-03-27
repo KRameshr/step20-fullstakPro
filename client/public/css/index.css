@@ -26,7 +26,7 @@ h2 {
 /* =======================
    Navigation Bar
 ======================= */
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -71,6 +71,125 @@ h2 {
   font-size: 24px;
   cursor: pointer;
   color: #fff;
+} */
+
+/* =======================
+   New Navbar Styles
+======================= */
+.navbar {
+  background: #008080;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(0, 128, 128, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.6rem 1.5rem;
+}
+
+.navbar strong {
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+/* Underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #b2dfdb;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Profile button */
+.nav-links .profile-link {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Menu icon */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  color: #fff;
+  user-select: none;
+}
+
+#menuBtn {
+  transition: transform 0.3s ease-in-out;
+  display: inline-block; /* Required for transform to work */
+}
+
+/* You can trigger a rotation in JS by adding a class or inline style */
+/* =======================
+   Responsive Navbar
+======================= */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+    font-size: 32px !important;
+  }
+
+  /* 3. Hide standard links on Mobile (until menu is active) */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #008080;
+    flex-direction: column;
+    padding: 80px 20px;
+    z-index: 1000;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+  /* Style the links inside the mobile menu */
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
 }
 
 /* Project Description */

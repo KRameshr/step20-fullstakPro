@@ -1,0 +1,43 @@
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/") Home
+        a(href="/login") Login
+        a(href="/register") Register
+
+    header.hero
+      h1 Elevate Your Code
+      p The complete MERN stack boilerplate for secure and scalable modern web applications.
+      .btn-group
+        a.btn.btn-white(href="/register")
+          span.material-symbols-outlined rocket_launch
+          | Get Started
+        a.btn.btn-outlineh(href="/login") Login to Account
+
+    main.cards
+      section.card
+        .card-icon: span.material-symbols-outlined lock
+        h3 Secure Auth
+        p Industry-standard JWT and encrypted password storage.
+      section.card
+        .card-icon: span.material-symbols-outlined settings_suggest
+        h3 Modular Design
+        p Built with reusable components and clean architecture.
+      section.card
+        .card-icon: span.material-symbols-outlined speed
+        h3 Performance
+        p Optimized for speed with server-side rendering.
+
+    footer: p © 2026 ZonetoCode. Designed for Developers.
+    script(src="/js/script.js")

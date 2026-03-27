@@ -1,0 +1,46 @@
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Login | ZonetoCode
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/") Home
+        a(href="/login") Login
+        a(href="/register") Register
+
+    .form-wrapper
+      .form-container
+        .form-header: h2 WELCOME BACK
+        .form-body
+          if error
+            .alert.error= error
+
+          form(action="/login" method="POST")
+            .form-group
+              label Email Address
+              input(type="email" name="email" placeholder="name@company.com" required)
+            
+            .form-group
+              label Password
+              .password-wrapper
+                input(type="password" name="password" id="pw" placeholder="••••••••" required)
+                span.eye-btn(onclick="togglePassword('pw', 'eyeIcon')")
+                  span.material-symbols-outlined#eyeIcon visibility_off
+
+            button.btn-submit(type="submit") Sign In
+
+          .form-footer
+            p Don't have an account? 
+              a(href="/register")  Register Now
+
+    footer: p © 2026 ZonetoCode. Designed for Developers.
+    script(src="/js/script.js")

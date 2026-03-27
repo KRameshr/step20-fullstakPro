@@ -1,8 +1,6 @@
-// Edit Hero
-
 function editHero(id) {
   $.ajax({
-    url: API + "/getone/" + id,
+    url: API + "/heroes/getone/" + id, // ✅ updated
     method: "GET",
     success: function (hero) {
       $("#u-title").val(hero.title);
@@ -17,18 +15,15 @@ function editHero(id) {
       $("#back-btn").show();
       $("#update-form")[0].scrollIntoView({ behavior: "smooth" });
     },
-    error: function (err) {
-      console.log("Error:", err);
+    error: function () {
+      showAlert("Something went wrong! ❌", "error");
     },
   });
 }
 
-// =======================
-// Update Hero
-// =======================
 function updateHero() {
-  var id = $("#heroId").val();
-  var data = {
+  const id = $("#heroId").val();
+  const data = {
     title: $("#u-title").val().trim(),
     firstname: $("#u-fname").val().trim(),
     lastname: $("#u-lname").val().trim(),
@@ -38,27 +33,23 @@ function updateHero() {
 
   if (Object.values(data).every(Boolean)) {
     $.ajax({
-      url: API + "/update/" + id,
+      url: API + "/heroes/update/" + id, // updated
       method: "PUT",
       contentType: "application/json",
       data: JSON.stringify(data),
-      success: function (res) {
-        console.log("Updated:", res);
-        showAlert("Hero Updated Successfully! ✏️", "success");
+      success: function () {
+        showAlert("Hero Updated Successfully!", "success");
         cancelUpdate();
         render();
       },
-      error: function (err) {
-        console.log("Error:", err);
-        showAlert("Something went wrong!", "error");
+      error: function () {
+        showAlert("Something went wrong! ❌", "error");
       },
     });
   } else {
-    showAlert("Please fill all fields!", "error");
+    showAlert("Please fill all fields! ⚠️", "error");
   }
 }
-
-// Cancel Update
 
 function cancelUpdate() {
   $("#u-title, #u-fname, #u-lname, #u-email, #u-city, #heroId").val("");

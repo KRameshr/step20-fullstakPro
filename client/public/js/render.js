@@ -1,7 +1,6 @@
-// Render Heroes Table
 function render() {
   $.ajax({
-    url: API + "/data",
+    url: API + "/heroes/data", // ✅ updated route
     method: "GET",
     success: function (res) {
       $("#herogrid").html("");
@@ -14,12 +13,8 @@ function render() {
             <td>${hero.lastname}</td>
             <td>${hero.email}</td>
             <td>${hero.city}</td>
-            <td>
-              <button class="edit-btn" data-id="${hero._id}">Edit</button>
-            </td>
-            <td>
-              <button class="delete-btn" data-id="${hero._id}">Delete</button>
-            </td>
+            <td><button class="edit-btn" data-id="${hero._id}">Edit</button></td>
+            <td><button class="delete-btn" data-id="${hero._id}">Delete</button></td>
           </tr>
         `);
       });

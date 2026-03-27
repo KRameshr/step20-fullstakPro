@@ -1,0 +1,52 @@
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Register | ZonetoCode
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/") Home
+        a(href="/login") Login
+        a(href="/register") Register
+
+    .form-wrapper
+      .form-container
+        .form-header: h2 Create Account
+        .form-body
+          if error
+            .alert.error= error
+          if success
+            .alert.success= success
+          form(action="/register" method="POST")
+            .form-group
+              label First Name
+              input(type="text" name="firstname" placeholder="Your name" required)
+            .form-group
+              label Email Address
+              input(type="email" name="email" placeholder="email@example.com" required)
+            .form-group
+              label Password
+              .password-wrapper
+                input(type="password" name="password" id="pw" placeholder="••••••••" required)
+                span.eye-btn(onclick="togglePassword('pw', 'eye1')")
+                  span.material-symbols-outlined#eye1 visibility_off
+            .form-group
+              label Confirm Password
+              .password-wrapper
+                input(type="password" name="confirmPassword" id="cpw" placeholder="••••••••" required)
+                span.eye-btn(onclick="togglePassword('cpw', 'eye2')")
+                  span.material-symbols-outlined#eye2 visibility_off
+            button.btn-submit(type="submit") Register Now
+          .form-footer
+            p Already have an account? 
+              a(href="/login") Login Here
+
+    footer: p © 2026 ZonetoCode. Designed for Developers.
+    script(src="/js/script.js")

@@ -4,19 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heroes</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-      <div class="nav-title">ZonetoCode</div>
-      <div class="nav-toggle" id="menuToggle">☰</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Cart</a></li>
-        <li><a href="#login">Login</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#about">About Us</a></li>
-      </ul>
+    <nav class="navbar" id="navbar">
+      <strong onclick="window.location.href = '/'">ZonetoCode</strong>
+
+      <span
+        class="material-symbols-outlined menu-icon"
+        id="menuBtn"
+        style="cursor: pointer; font-size: 36px; user-select: none"
+        onclick="toggleMenu()"
+        >menu</span
+      >
+
+      <div class="nav-links" id="navLinks">
+        <a href="/profile" class="profile-link">Profile</a>
+        <a href="/logout">Logout</a>
+      </div>
     </nav>
     <!-- Hero Header -->
     <div class="page-header" id="home">
@@ -178,5 +188,6 @@
     <script src="js/save.js"></script>
     <script src="js/edit.js"></script>
     <script src="js/delete.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

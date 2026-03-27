@@ -1,0 +1,98 @@
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Profile | ZonetoCode
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/dashboard") Dashboard
+        a.logout-link(href="/logout") Logout
+
+    .profile-wrapper
+      if user
+        //- Status Messages (Green for Success, Red for Error)
+        if error
+          .status-msg.error
+            span.material-symbols-outlined report
+            | #{error}
+        if success
+          .status-msg.success
+            span.material-symbols-outlined check_circle
+            | #{success}
+        
+        .profile-header
+          .avatar-circle= user.firstname ? user.firstname.charAt(0).toUpperCase() : '?'
+          .user-info
+            h1#welcomeText Welcome, #{user.firstname}!
+            p Manage your account settings and credentials.
+            span.badge Active Developer
+
+        //- SECTION 1: PERSONAL INFORMATION
+        .info-card
+          h3 Personal Information
+          
+          #profileDetails.detail-view
+            .detail-item
+              label Full Name
+              p#displayFullName #{user.firstname}
+            .detail-item
+              label Email Address
+              p#displayEmail= user.email
+            
+            .action-btns
+              button.btn-action#editProfileBtn
+                span.material-symbols-outlined edit
+                | Update Profile
+              button.btn-action.btn-dark#showPassBtn
+                span.material-symbols-outlined lock_reset
+                | Change Password
+
+          //- Edit Profile Form (AJAX enabled)
+          form#profileForm.edit-form(style="display: none;")
+            .form-group
+              label First Name
+              input(type="text" name="firstname" value=user.firstname required)
+            .form-group
+              label Email Address
+              input(type="email" name="email" value=user.email required)
+            .form-row(style="margin-top: 10px; display: flex; align-items: center; gap: 15px;")
+              button.btn-action(type="submit") Save Changes
+              button.btn-action.btn-outline#cancelEditBtn(type="button") Cancel
+              span#updateMsg
+
+        //- SECTION 2: PASSWORD FORM
+        #passwordSection(style="display: none;")
+          .info-card
+            h3 Change Password
+            form(action="/change-password" method="POST").password-form
+              .form-group
+                label Current Password
+                .input-wrapper
+                  input(type="password" name="currentPassword" id="currPw" required)
+                  span.material-symbols-outlined.toggle-pass(onclick="togglePassword('currPw', 'eyeCurr')")#eyeCurr visibility_off
+                  
+              .form-group
+                label New Password
+                .input-wrapper
+                  input(type="password" name="newPassword" id="newPw" required)
+                  span.material-symbols-outlined.toggle-pass(onclick="togglePassword('newPw', 'eyeNew')")#eyeNew visibility_off
+              
+              .action-btns
+                button.btn-action(type="submit") Save New Password
+                button.btn-action.btn-outline#cancelPassBtn(type="button") Cancel
+
+      else
+        .info-card(style="text-align: center; padding: 50px;")
+          h3 Session Expired.
+          a.btn-action(href="/login" style="margin-top:20px; justify-content: center;") Login
+
+    footer
+      p © 2026 ZonetoCode. Designed for Developers.
+    script(src="/js/script.js")

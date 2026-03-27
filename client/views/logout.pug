@@ -1,0 +1,46 @@
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Logged Out | ZonetoCode
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined")
+    //- Ensure this matches your main CSS file name (main.css or index.css)
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    nav.navbar#navbar
+      strong(onclick="window.location.href='/'") ZonetoCode
+      //- This span is the burger menu for mobile
+      span.material-symbols-outlined.menu-icon#menuBtn(onclick="toggleMenu()") menu
+      .nav-links#navLinks
+        a(href="/") Home
+        a(href="/login") Login
+        a(href="/register") Register
+
+    .form-wrapper
+      .form-container(style="text-align: center; padding: 50px 30px;")
+        .logout-status
+          span.material-symbols-outlined(style="font-size: 70px; color: #008080; margin-bottom: 20px;") check_circle
+          h2(style="color: #333; margin-bottom: 10px;") Successfully Logged Out
+          p(style="color: #666; margin-bottom: 30px;") You have been securely signed out. Thank you for using ZonetoCode!
+        
+        //- Using action-btns class from your main.css
+        .action-btns(style="justify-content: center;")
+          a.btn-action(href="/login") 
+            span.material-symbols-outlined login
+            | Login Again
+          a.btn-action.btn-outline(href="/") Go to Home
+
+    footer
+      p © 2026 ZonetoCode. Built for Developers.
+
+    //- This external script contains the toggleMenu function
+    script(src="/js/script.js")
+    script.
+      // Auto-redirect to home after 10 seconds
+      setTimeout(() => {
+        if(window.location.pathname === '/logout') {
+            window.location.href = "/";
+        }
+      }, 10000);
